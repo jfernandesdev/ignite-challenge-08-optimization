@@ -1,25 +1,30 @@
-import { Button } from "./Button";
+import { memo } from 'react'
+import { Button } from './Button'
+
+type Genres = {
+  id: number
+  name: 'action' | 'comedy' | 'documentary' | 'drama' | 'horror' | 'family'
+  title: string
+}
 
 interface SideBarProps {
-  genres: Array<{
-    id: number;
-    name: 'action' | 'comedy' | 'documentary' | 'drama' | 'horror' | 'family';
-    title: string;
-  }>;
-  selectedGenreId: number;
-  buttonClickCallback: (args: any) => void;
+  genres: Genres[]
+  selectedGenreId: number
+  buttonClickCallback: (args: any) => void
 }
 
 export function SideBar({
   genres,
   selectedGenreId,
-  buttonClickCallback
+  buttonClickCallback,
 }: SideBarProps) {
   return (
-    <nav className="sidebar">
-      <span>Watch<p>Me</p></span>
+    <nav className='sidebar'>
+      <span>
+        Watch<p>Me</p>
+      </span>
 
-      <div className="buttons-container">
+      <div className='buttons-container'>
         {genres.map(genre => (
           <Button
             key={String(genre.id)}
@@ -30,7 +35,6 @@ export function SideBar({
           />
         ))}
       </div>
-
     </nav>
   )
 }
